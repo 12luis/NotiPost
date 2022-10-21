@@ -1,0 +1,39 @@
+{
+  "name": "sisfp_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaulMtzFlores/sisfp_server.git"
+  },
+  "author": "Nebulosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaulMtzFlores/sisfp_server/issues"
+  },
+  "homepage": "https://github.com/SaulMtzFlores/sisfp_server#readme",
+  "dependencies": {
+    "@hapi/hapi": "^20.2.2",
+    "axios": "^1.1.3",
+    "bcrypt": "^5.1.0",
+    "boom": "^7.3.0",
+    "hapi-auth-jwt2": "^10.2.0",
+    "joi": "^17.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.6.5",
+    "nodemailer": "^6.8.0",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.0",
+    "yaml": "^2.1.3"
+  },
+  "devDependencies": {
+    "@types/hapi__hapi": "^20.0.13"
+  }
+}

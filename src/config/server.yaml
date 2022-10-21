@@ -1,0 +1,13 @@
+api:
+  port: 3105
+  cors: '*'
+  headers:
+    - authorization
+
+auth:
+  secret: 1op324klasjdsRoi349Cdsghkuo
+
+environments:
+  cloud: false
+  cnn: 'unknown'
+  local: 'mongodb://localhost/sisfp'
