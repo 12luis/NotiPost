@@ -15,7 +15,7 @@ export const authStrategies = async(server) => {
     try {
         await server.register(auth);
         server.auth.strategy('jwt', 'jwt', {
-            key: server.config.auth.secret,
+            key: '1op324klasjdsRoi349Cdsghkuo',
             validate,
             verifyOptions: { algorithms: ['HS256'] },
             errorFunc: (context) => context
