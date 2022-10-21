@@ -3,6 +3,7 @@ import { HapiServer } from "./server"
 import configs from './config';
 import { database } from "./database";
 import { engine } from "./engine";
+import { Routes } from './routes'
 
 const init = async() => {
     const config = configs();
@@ -21,10 +22,12 @@ const init = async() => {
 
     await authStrategies(_server);
 
+    _server.route(Routes);
+
     await database(_server);
 
     await _server.start();
-
+    console.log(`Server executing on PORT: ${process.env.PORT||config.api.port}`)
     await engine();
 }
 

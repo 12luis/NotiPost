@@ -2,7 +2,7 @@ api:
   port: 3105
   cors: '*'
   headers:
-    - authorization
+    - Authorization
 
 auth:
   secret: 1op324klasjdsRoi349Cdsghkuo
