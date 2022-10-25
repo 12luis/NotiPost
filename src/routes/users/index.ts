@@ -1,4 +1,5 @@
 import Boom from '@hapi/boom';
+import Users from './model';
 
 export async function _findById(req:any, h:any):Promise<any>{
     try {
@@ -11,7 +12,8 @@ export async function _findById(req:any, h:any):Promise<any>{
 
 export async function _getAll(req:any, h:any):Promise<any>{
     try {
-        return h.response('GET getAll').code(200);
+        const users = await Users.find({});
+        return h.response(`GET getAll ${users}`).code(200);
     } catch (error) {
         console.log(error);
         return Boom.badImplementation();
