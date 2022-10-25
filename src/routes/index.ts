@@ -1,13 +1,15 @@
+import authRoutes from './auth/routes';
+import usersRoutes from './users/routes';
+
 export const Routes:any = [
     {
         method: 'GET',
         path: '/',
         options: {
-            handler: function(req:any, h:any){
-                return h.response({time:new Date()});
-            },
+            handler: function(req:any, h:any){ return h.response({time:new Date()})},
             auth: false,
-            description: 'Default route',
         }
-    }
+    },
+    ...authRoutes,
+    ...usersRoutes
 ]

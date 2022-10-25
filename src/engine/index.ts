@@ -8,7 +8,8 @@ export const engine = async() => {
 }
 
 const cycleEngine = async() => {
+    const cycleEach:number = 3600;
     // Does stuff
     console.log('Cycle completed.')
-    setTimeout( async() => await cycleEngine(), 10000);
+    setTimeout( async() => await cycleEngine(), cycleEach*1000);
 };
