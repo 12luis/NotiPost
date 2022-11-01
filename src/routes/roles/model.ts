@@ -24,7 +24,6 @@ const schema = new Schema({
         default: false
     },
 
-
     // model
     name: { type: String, required: true },
     modules: { type: [{ type: String, required: true }]}

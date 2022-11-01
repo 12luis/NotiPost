@@ -1,7 +1,7 @@
 import * as Mongoose from 'mongoose';
 import { model, Schema } from 'mongoose';
 
-const modelName = 'Users'
+const modelName = 'User'
 
 const schema = new Schema({
     _id: { 

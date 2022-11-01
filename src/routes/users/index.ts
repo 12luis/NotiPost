@@ -1,58 +1,134 @@
 import Boom from '@hapi/boom';
-import Users from './model';
+import mongoose from 'mongoose';
+import * as _ from 'lodash';
+import Model from './model';
 
-export async function _findById(req:any, h:any):Promise<any>{
+export async function _findById(request:any, h:any):Promise<any>{
     try {
-        return h.response('GET findById').code(200);
+        const { id } = request.params;
+
+        const model: any = await Model.findById(id);
+
+        if(model && !model.deleted){
+            return h.response(JSON.parse(JSON.stringify(model))).code(200);
+        }
+        return Boom.notFound('Elemento no encontrado', { _id: id });
     } catch (error) {
         console.log(error);
         return Boom.badImplementation();
     }
 }
 
-export async function _getAll(req:any, h:any):Promise<any>{
+export async function _getAll(request:any, h:any):Promise<any>{
+    const { query } = request;
+    query.paginationPage = query.paginationPage || 1;
+    query.paginationPerPage = query.paginationPerPage || 10;
     try {
-        const users = await Users.find({});
-        return h.response(`GET getAll ${users}`).code(200);
-    } catch (error) {
-        console.log(error);
-        return Boom.badImplementation();
-    }
-}
-
-export async function _create(req:any, h:any):Promise<any>{
-    try {
-        const findEmail = await Users.findOne({
-            email: req.payload.email
+        const aggregate: any = [];
+        const $and: any = [];
+        if(query.search){
+            const term = `(?=.*${query.search}.*)`;
+            const $or: any = [];
+            $or.push({ name: { $regex: term, $options: 'i' }});
+            $or.push({ description: { $regex: term, $options: 'i' }});
+            $and.push({ $or });
+        }else if(query.id && query.id.length){
+            const ids = query.id.split(',');
+            if(ids.length === 1){
+                $and.push({ _id: new mongoose.Types.ObjectId(ids[0])});
+            }else if (ids.length > 1){
+                const $or: any = [];
+                ids.forEach(id => {
+                    $or.push({ _id: new mongoose.Types.ObjectId(id)});
+                });
+                $and.push({  $or });
+            }
+        }
+        $and.push({ deleted: { $ne: true } });
+        if($and.length){
+            aggregate.push({
+                $match: { $and },
+            });
+        }
+        const _aggregate = _.clone(aggregate);
+        let $sort: any = {};
+        aggregate.push({
+            $sort,
         });
-        if(findEmail){
-            return Boom.badRequest('El usuario ya existe');
-        }
+        aggregate.push({
+            $skip: Number(
+                (query.paginationPage * 1 - 1) * (query.paginationPerPage * 1),
+            ),
+        });
+        aggregate.push({
+            $limit: Number(query.paginationPerPage),
+        });
+        _aggregate.push({ $count: 'total' });
+        const total = await Model.countDocuments({ deleted: false });
+        const totalFiltered: any = await Model.aggregate(_aggregate);
+        const result: any = await Model.aggregate(aggregate);
+        const data = {
+            data: result,
+            pagination: {
+                count: total,
+                countFiltered: totalFiltered.length ? totalFiltered[0].total : 0,
+                page: query.paginationPage * 1,
+                perPage: query.paginationPerPage * 1,
+            },
+        };
 
-        const usuario = await new Users(req.payload).save();
-        if(!usuario){
-            return Boom.badRequest('Algo salio mal. Intenta nuvamente');
-        }
-
-        return h.response({_id: usuario._id}).code(200);
+        return h.response(data).code(200).header('Content-Type', 'application/json');
     } catch (error) {
         console.log(error);
         return Boom.badImplementation();
     }
 }
 
-export async function _edit(req:any, h:any):Promise<any>{
+export async function _create(request:any, h:any):Promise<any>{
+    const { payload } = request;
+    let id;
     try {
-        return h.response('PUT edit').code(200);
+        const model = new Model(payload);
+        await model.save();
+        id = model._id;
+        return h.response({ _id: id.toString() }).code(201);
     } catch (error) {
         console.log(error);
+        await Model.deleteOne({ _id: id });
         return Boom.badImplementation();
     }
 }
 
-export async function _delete(req:any, h:any):Promise<any>{
+export async function _edit(request:any, h:any):Promise<any>{
+    const { payload } = request;
+    const { id } = request.params;
+    let originalModel;
+
     try {
-        return h.response('DELETE edit').code(200);
+        originalModel = await Model.findById(id);
+        if(!originalModel){
+            return Boom.notFound('No se encontró el elemento', {_id: id});
+        }
+        await Model.updateOne({_id : id }, {$set: {...(payload as any) } });
+        return h.response({_id: id}).code(200);
+    } catch (error) {
+        console.log(error);
+        await Model.updateOne(
+            { _id: new mongoose.Types.ObjectId(id) },
+            originalModel,
+        );
+        return Boom.badImplementation();
+    }
+}
+
+export async function _delete(request:any, h:any):Promise<any>{
+    const{ id }: any = request.params;
+    try {
+        await Model.findOneAndUpdate(
+            {_id: new mongoose.Types.ObjectId(id) },
+            { $set: { deleted: true } },
+        );
+        return h.response({ success: true }).code(200);
     } catch (error) {
         console.log(error);
         return Boom.badImplementation();
