@@ -1,7 +1,7 @@
 import { _create, _delete, _edit, _findById, _getAll } from ".";
-import { deleteModel, deleteResponse, editResponse, findModel, newResponse } from "../../routes/base.validators";
+import { deleteModel, deleteResponse, editResponse, findModel, newResponse, editModel } from "../../routes/base.validators";
 import { failAction } from "../../core/joi";
-import { baseModel, editModel, newModel } from "./validators";
+import { baseModel, editUserModel, newModel } from "./validators";
 
 const prefix:string = '/users';
 
@@ -70,7 +70,7 @@ export default [
             validate: {
                 // headers: 
                 params: editModel,
-                payload: editModel,
+                payload: editUserModel,
                 failAction
             },
             response: {

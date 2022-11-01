@@ -16,7 +16,7 @@ export const newModel = Joi.object({
     active: Joi.boolean().optional()
 }).required();
 
-export const editModel = Joi.object({
+export const editUserModel = Joi.object({
     name: Joi.string().optional(),
     active: Joi.boolean().optional()
 }).required();

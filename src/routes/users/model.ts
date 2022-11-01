@@ -45,7 +45,7 @@ const schema = new Schema({
     active: { 
         type: Boolean, 
         required: true, 
-        default: false 
+        default: true 
     },
     deleted: { 
         type: Boolean, 
