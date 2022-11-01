@@ -1,7 +1,31 @@
-import yml from 'yaml';
-import fs from 'fs';
+export default function (id:string){
+    const configsObject = {
+        
+        // API CONFIGS
+        port: 3105,
+        origin: [
+            '*'
+        ],
+        additionalHeaders: [
+            'authorization', 
+            'language'
+        ],
 
-export default function (){
-    const file = fs.readFileSync(__dirname+'/server.yaml', 'utf-8');
-    return yml.parse(file);
+        // DATABASE CONFIGS
+        cloud: false,
+        cnn: 'mongodb+srv://admin:admin@sisfp.w4kxy5y.mongodb.net/test',
+        local: 'mongodb://localhost/sisfp',
+
+        
+        // AUTH CONFIGS
+        secret: '1op324klasjdsRoi349Cdsghkuo',
+
+        // MAIL CONFIS
+        nodemailerService: '',
+
+        // CYCLE ENGINE CONFIGS
+        enginecycle: 3600000,
+
+    }
+    return configsObject[`${id}`];
 }

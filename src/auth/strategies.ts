@@ -1,6 +1,7 @@
 import auth from 'hapi-auth-jwt2';
 import Boom from '@hapi/boom';
-import { HapiServer } from 'server';
+import configs from '../config/index'; 
+
 
 const validate = async(decoded, req, h) => {
     try {
@@ -15,7 +16,7 @@ export const authStrategies = async(server) => {
     try {
         await server.register(auth);
         server.auth.strategy('jwt', 'jwt', {
-            key: '1op324klasjdsRoi349Cdsghkuo',
+            key: configs('secret'),
             validate,
             verifyOptions: { algorithms: ['HS256'] },
             errorFunc: (context) => context

@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
+import configs from '../config/index'; 
+
 
 export const database = async(server) => {
     try {
-        const mongoCloud = false;
-        const connUrl = (mongoCloud) ? 'mongodb+srv://admin:admin@sisfp.w4kxy5y.mongodb.net/test' : 'mongodb://localhost/sisfp';
+        const connUrl = configs('cloud') ? configs('cnn') : configs('local');
         await mongoose.connect(connUrl);
         console.log('Database is connected');
     } catch (error) {

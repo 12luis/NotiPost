@@ -2,16 +2,17 @@ import { authStrategies } from "./auth/strategies";
 import { HapiServer } from "./server"
 import { database } from "./database";
 import { engine } from "./engine";
-import { Routes } from './routes'
+import { Routes } from './routes';
+import configs from './config/index'; 
 
 const init = async() => {
 
     const _server = new HapiServer({
-        port: (process.env.PORT || 3105),
+        port: (process.env.PORT || configs('port')),
         routes: {
             cors: {
-                origin: ['*'],
-                additionalHeaders: ['authorization', 'language']
+                origin: configs('origin'),
+                additionalHeaders: configs('additionalHeaders')
             }
         }
     });
@@ -23,7 +24,7 @@ const init = async() => {
     await database(_server);
 
     await _server.start();
-    console.log(`Server executing on PORT: ${process.env.PORT||3105}`)
+    console.log(`Server executing on PORT: ${process.env.PORT||configs('port')}`)
     await engine();
 }
 

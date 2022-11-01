@@ -1,3 +1,7 @@
+import Posts from '../routes/posts/model';
+import configs from '../config/index'; 
+
+
 export const engine = async() => {
     try {
         console.log('Engine init.')
@@ -7,9 +11,19 @@ export const engine = async() => {
     }
 }
 
-const cycleEngine = async() => {
-    const cycleEach:number = 3600;
-    // Does stuff
+const cycleEngine = async() => {    
+    await sendReminders();
+
     console.log('Cycle completed.')
-    setTimeout( async() => await cycleEngine(), cycleEach*1000);
+    setTimeout( async() => await cycleEngine(), configs('enginecycle'));
 };
+
+const sendReminders = async() => {
+    const posts = await Posts.find({
+        // TODO see the posts that arent sent yet.|
+    });
+
+    for(let post of posts){
+        
+    }
+}
