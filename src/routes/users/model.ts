@@ -39,7 +39,7 @@ const schema = new Schema({
         default: false 
     },
     verificationToken: { 
-        type: Boolean, 
+        type: String, 
         required: true 
     },
     active: { 

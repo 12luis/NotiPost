@@ -25,10 +25,10 @@ export const deleteResponse = Joi.object({
 });
 
 export const commonBase = {
-    _id: Joi.ObjectId().required(),
-    active: Joi.boolean().required(),
-    deleted: Joi.boolean().required(),
-    root: Joi.boolean().required()
+    _id: Joi.ObjectId().optional(),
+    active: Joi.boolean().optional(),
+    deleted: Joi.boolean().optional(),
+    root: Joi.boolean().optional()
 };
 
 export const pagination = Joi.object({

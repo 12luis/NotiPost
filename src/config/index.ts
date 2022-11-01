@@ -19,6 +19,7 @@ export default function (id:string){
         
         // AUTH CONFIGS
         secret: '1op324klasjdsRoi349Cdsghkuo',
+        jwtExpiration: '4h',
 
         // MAIL CONFIS
         nodemailerService: '',

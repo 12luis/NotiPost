@@ -1,6 +1,7 @@
 import Boom from '@hapi/boom';
 import jwt from 'jsonwebtoken';
 import User from '../users/model';
+import configs from '../../config/index';
 
 export async function _login(request:any, h:any):Promise<any>{
     try {
@@ -19,7 +20,7 @@ export async function _login(request:any, h:any):Promise<any>{
             return Boom.unauthorized('Invalid password');
         }
 
-        const token =  jwt.sign({ _id: _user._id });
+        const token =  jwt.sign({ _id: _user._id }, configs('secret'), { expiresIn: configs('jwtExpiration')});
         return h.response({ token }).code(200);
         
     } catch (error) {

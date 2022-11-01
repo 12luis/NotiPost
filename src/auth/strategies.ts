@@ -7,7 +7,6 @@ import { HapiServer } from 'server';
 export const validate = async(decoded:any, req:any, h:any): Promise<any> => {
     try {
         // Validate
-        console.log('hehe');
         return { isValid: true };
     } catch (error) {
         return Boom.badImplementation();

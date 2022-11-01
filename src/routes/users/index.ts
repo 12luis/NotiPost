@@ -52,8 +52,13 @@ export async function _getAll(request:any, h:any):Promise<any>{
         }
         const _aggregate = _.clone(aggregate);
         let $sort: any = {};
+        if(query.sort){
+            $sort[query.sort] = query.sortDir === 'desc' ? -1 : 1;
+        } else {
+            $sort = { name: -1 };
+        }
         aggregate.push({
-            $sort,
+            $sort
         });
         aggregate.push({
             $skip: Number(
@@ -67,6 +72,7 @@ export async function _getAll(request:any, h:any):Promise<any>{
         const total = await Model.countDocuments({ deleted: false });
         const totalFiltered: any = await Model.aggregate(_aggregate);
         const result: any = await Model.aggregate(aggregate);
+        console.log(result);
         const data = {
             data: result,
             pagination: {
