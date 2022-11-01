@@ -25,14 +25,14 @@ const schema = new Schema({
         type: Mongoose.Schema.Types.ObjectId, 
         required: true 
     },
-    centerId: { 
-        type: Mongoose.Schema.Types.ObjectId, 
-        required: true 
-    },
-    degreeId: { 
-        type: Mongoose.Schema.Types.ObjectId, 
-        required: true 
-    },
+    // centerId: { 
+    //     type: Mongoose.Schema.Types.ObjectId, 
+    //     required: true 
+    // },
+    // degreeId: { 
+    //     type: Mongoose.Schema.Types.ObjectId, 
+    //     required: true 
+    // },
     emailVerified: { 
         type: Boolean, 
         required: true, 

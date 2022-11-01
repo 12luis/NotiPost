@@ -1,4 +1,7 @@
 import { _create, _delete, _edit, _findById, _getAll } from ".";
+import { deleteModel, deleteResponse, editResponse, findModel, newResponse } from "../../routes/base.validators";
+import { failAction } from "../../core/joi";
+import { baseModel, editModel, newModel } from "./validators";
 
 const prefix:string = '/base';
 
@@ -9,7 +12,16 @@ export default [
         options: {
             handler: _findById,
             auth: 'jwt',
-            description: 'Find resource by ID'
+            description: 'Find resource by ID',
+            validate: {
+                // headers: 
+                params: findModel,
+                failAction
+            },
+            response: {
+                schema: baseModel,
+                failAction
+            }
         }
     },
     {
@@ -18,7 +30,16 @@ export default [
         options: {
             handler: _getAll,
             auth: 'jwt',
-            description: 'Find list of resources'
+            description: 'Find list of resources',
+            // validate: {
+            //     headers: 
+            //     params: findModel,
+            //     failAction
+            // },
+            response: {
+                schema: baseModel,
+                failAction
+            }
         }
     },
     {
@@ -27,7 +48,16 @@ export default [
         options: {
             handler: _create,
             auth: 'jwt',
-            description: 'Create resource'
+            description: 'Create resource',
+            validate: {
+                // headers: 
+                payload: newModel,
+                failAction
+            },
+            response: {
+                schema: newResponse,
+                failAction
+            }
         }
     },
     {
@@ -36,7 +66,17 @@ export default [
         options: {
             handler: _edit,
             auth: 'jwt',
-            description: 'Edit resource'
+            description: 'Edit resource',
+            validate: {
+                // headers: 
+                params: editModel,
+                payload: editModel,
+                failAction
+            },
+            response: {
+                schema: editResponse,
+                failAction
+            }
         }
     },
     {
@@ -45,7 +85,16 @@ export default [
         options: {
             handler: _delete,
             auth: 'jwt',
-            description: 'Delete resource'
+            description: 'Delete resource',
+            validate: {
+                // headers: 
+                params: deleteModel,
+                failAction
+            },
+            response: {
+                schema: deleteResponse,
+                failAction
+            }
         }
     }
 ]

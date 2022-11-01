@@ -1,7 +1,7 @@
 import * as Mongoose from 'mongoose';
 import { model, Schema } from 'mongoose';
 
-const modelName = 'Posts'
+const modelName = 'Role'
 
 const schema = new Schema({
     _id: { 
@@ -22,7 +22,12 @@ const schema = new Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+
+
+    // model
+    name: { type: String, required: true },
+    modules: { type: [{ type: String, required: true }]}
 }, {
     versionKey: false,
     collection: modelName

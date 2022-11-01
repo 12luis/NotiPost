@@ -1,4 +1,3 @@
-import Posts from '../routes/posts/model';
 import configs from '../config/index'; 
 
 
@@ -19,11 +18,5 @@ const cycleEngine = async() => {
 };
 
 const sendReminders = async() => {
-    const posts = await Posts.find({
-        // TODO see the posts that arent sent yet.|
-    });
 
-    for(let post of posts){
-        
-    }
 }
