@@ -32,6 +32,10 @@ export default function (id:string){
         // CYCLE ENGINE CONFIGS
         enginecycle: 3600000,
 
+        // ROLES
+        studentRole: '63a69ab53448a4224838a022',
+        academicRole: '63a69ab53448a4224838a023'
+
     }
     return configsObject[`${id}`];
 }

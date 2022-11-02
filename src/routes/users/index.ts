@@ -2,6 +2,7 @@ import Boom from '@hapi/boom';
 import mongoose from 'mongoose';
 import * as _ from 'lodash';
 import Model from './model';
+import configs from '../../config';
 
 export async function _findById(request:any, h:any):Promise<any>{
     try {
@@ -94,6 +95,18 @@ export async function _create(request:any, h:any):Promise<any>{
     const { payload } = request;
     let id;
     try {
+
+        const { email } = payload as any;
+
+        if(email.split("@")[1] === 'alumnos.udg.mx'){
+            payload['roleId'] = configs('studentRole');
+        }else if (email.split("@")[1] === 'academicos.udg.mx'){
+            payload['roleId'] = configs('academicRole');
+        }else {
+            return Boom.badRequest('Solo se permite el registro a alumnos de la Universidad de Guadalajara');
+        }
+
+
         const model = new Model(payload);
         await model.save();
         id = model._id;
