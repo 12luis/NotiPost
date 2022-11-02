@@ -47,7 +47,7 @@ export default [
         path: `${prefix}`,
         options: {
             handler: _create,
-            auth: 'jwt',
+            auth: false,
             description: 'Create resource',
             validate: {
                 // headers: 

@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import * as _ from 'lodash';
 import Model from './model';
 import configs from '../../config';
+import { sendMail } from '../../mail/confirm';
 
 export async function _findById(request:any, h:any):Promise<any>{
     try {
@@ -109,6 +110,9 @@ export async function _create(request:any, h:any):Promise<any>{
 
         const model = new Model(payload);
         await model.save();
+
+        await sendMail(email);
+
         id = model._id;
         return h.response({ _id: id.toString() }).code(201);
     } catch (error) {
