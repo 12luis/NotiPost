@@ -23,7 +23,7 @@ const schema = new Schema({
     },
     roleId: { 
         type: Mongoose.Schema.Types.ObjectId, 
-        required: true 
+        required: false 
     },
     // centerId: { 
     //     type: Mongoose.Schema.Types.ObjectId, 
@@ -35,12 +35,12 @@ const schema = new Schema({
     // },
     emailVerified: { 
         type: Boolean, 
-        required: true, 
-        default: false 
+        required: false,
+        default: false
     },
     verificationToken: { 
         type: String, 
-        required: true 
+        required: false
     },
     active: { 
         type: Boolean, 

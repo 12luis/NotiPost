@@ -15,7 +15,6 @@ export const recoverPassword = Joi.object({
 
 export const recoverPasswordResponse = Joi.object({
     success: Joi.boolean().required(),
-    message: Joi.string().optional()
 }).required();
 
 export const resetModel = Joi.object({

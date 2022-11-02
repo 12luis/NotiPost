@@ -22,7 +22,12 @@ export default function (id:string){
         jwtExpiration: '4h',
 
         // MAIL CONFIS
-        nodemailerService: '',
+        mailService: 'gmail',
+        mailHost: 'smtp.gmail.com',
+        mailSecureConnection: true,
+        mailSecure: false,
+        mailUser: 'llevelebnur@gmail.com',
+        mailPass: 'konphdkeszkuiuqm',
 
         // CYCLE ENGINE CONFIGS
         enginecycle: 3600000,

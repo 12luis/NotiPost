@@ -1,5 +1,5 @@
-import { _login } from ".";
-import { signIn, signInResponse } from './validators'
+import { _login, _recover } from ".";
+import { recoverPassword, recoverPasswordResponse, signIn, signInResponse } from './validators'
 import { failAction } from '../../core/joi'
 
 const prefix:string = '/auth';
@@ -18,6 +18,23 @@ export default [
             },
             response: {
                 schema: signInResponse,
+                failAction
+            }
+        }
+    },
+    {
+        method: 'POST',
+        path: `${prefix}/recover`,
+        options: {
+            handler: _recover,
+            auth: false,
+            description: 'Envía correo de recuperación',
+            validate: {
+                payload: recoverPassword,
+                failAction
+            },
+            response: {
+                schema: recoverPasswordResponse,
                 failAction
             }
         }
