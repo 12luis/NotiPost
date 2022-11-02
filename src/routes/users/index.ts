@@ -96,8 +96,8 @@ export async function _create(request:any, h:any):Promise<any>{
     let id;
     try {
 
+        // Asigna el ID de acuerdo al correo
         const { email } = payload as any;
-
         if(email.split("@")[1] === 'alumnos.udg.mx'){
             payload['roleId'] = configs('studentRole');
         }else if (email.split("@")[1] === 'academicos.udg.mx'){

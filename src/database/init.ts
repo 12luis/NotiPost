@@ -5,12 +5,11 @@ import Role from '../routes/roles/model';
 import User from '../routes/users/model';
 
 export default async function () {
-    const countRoles = await Role.countDocuments();
-    if(countRoles === 0){
-        const file = path.resolve(__dirname, './json/roles.json');
-        const roles = JSON.parse(fs.readFileSync(file, 'utf-8'));
-        await Role.insertMany(roles);
-    }
+
+    const file = path.resolve(__dirname, './json/roles.json');
+    const roles = JSON.parse(fs.readFileSync(file, 'utf-8'));
+    await Role.deleteMany({});
+    await Role.insertMany(roles);
 
     const countUsers = await User.countDocuments();
     if(countUsers === 0){
