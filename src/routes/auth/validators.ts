@@ -21,3 +21,9 @@ export const resetModel = Joi.object({
     token: Joi.string().required(),
     password: Joi.string().required()
 }).required();
+
+export const redeemPassword = Joi.object({
+    email: Joi.Email().required(),
+    code: Joi.any().required(),
+    password: Joi.string().required()
+})

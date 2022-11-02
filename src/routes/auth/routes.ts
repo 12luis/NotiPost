@@ -1,5 +1,5 @@
-import { _login, _recover } from ".";
-import { recoverPassword, recoverPasswordResponse, signIn, signInResponse } from './validators'
+import { _login, _recover, _redeem } from ".";
+import { recoverPassword, recoverPasswordResponse, redeemPassword, signIn, signInResponse } from './validators'
 import { failAction } from '../../core/joi'
 
 const prefix:string = '/auth';
@@ -31,6 +31,23 @@ export default [
             description: 'Envía correo de recuperación',
             validate: {
                 payload: recoverPassword,
+                failAction
+            },
+            response: {
+                schema: recoverPasswordResponse,
+                failAction
+            }
+        }
+    },
+    {
+        method: 'POST',
+        path: `${prefix}/redeem`,
+        options: {
+            handler: _redeem,
+            auth: false,
+            description: 'Para validar una cuenta de correo',
+            validate: {
+                payload: redeemPassword,
                 failAction
             },
             response: {

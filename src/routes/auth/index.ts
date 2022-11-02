@@ -42,11 +42,46 @@ export async function _recover(request:any, h:any):Promise<any>{
             return Boom.badRequest('El usuario no está activo');
         }
 
-        // Enviar correo
+        const updt:any = await User.updateOne({_id: _user._id}, {emailVerified: false});
+        if(!updt){
+            return Boom.badRequest('Algo salió mal, intentalo nuevamente');
+        }
+
         await sendMail(email);
         
         return h.response({success: true}).code(200);
     } catch (error) {
         return Boom.badImplementation();
+    }
+}
+
+export async function _redeem(request:any, h:any):Promise<any>{
+    try {
+        const { email, code, password } = request.payload as any;
+
+        const _user:any = await User.findOne({ 
+            email: { $regex: `^${email}$`, $options:'i' }, 
+            deleted: { $ne: true },
+            verificationToken: code
+        });
+
+        if(!_user){
+            return Boom.badRequest('Código incorrecto');
+        }
+
+        const updt:any = await User.updateOne({_id: _user._id}, {
+            active: true,
+            emailVerified: true,
+            password
+        });
+
+        if(!updt){
+            return Boom.badRequest('Algo salió mal, intentalo nuevamente');
+        }
+
+        return h.response({success: true}).code(200);
+        
+    } catch (error) {
+        
     }
 }
