@@ -76,6 +76,6 @@ export async function _redeem(request:any, h:any):Promise<any>{
         return h.response({success: true}).code(200);
         
     } catch (error) {
-        
+        return Boom.badImplementation();
     }
 }

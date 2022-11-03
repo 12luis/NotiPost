@@ -22,6 +22,7 @@ export default function (id:string){
         jwtExpiration: '4h',
 
         // MAIL CONFIS
+        mailsActive: false,
         mailService: 'gmail',
         mailHost: 'smtp.gmail.com',
         mailSecureConnection: true,

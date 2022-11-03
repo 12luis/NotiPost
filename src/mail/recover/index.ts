@@ -4,6 +4,9 @@ import configs from '../../config';
 
 export async function sendMail(targetEmail:string):Promise<boolean>{
     try {
+        if(configs('mailsActive')){
+            return true;
+        }
         
         const user = await User.findOne({ email: targetEmail });
         if(!user){
