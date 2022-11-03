@@ -4,7 +4,7 @@ import configs from '../../config';
 
 export async function sendMail(targetEmail:string):Promise<boolean>{
     try {
-        if(configs('mailsActive')){
+        if(!configs('mailsActive')){
             return true;
         }
 
