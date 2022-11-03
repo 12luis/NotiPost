@@ -1,4 +1,4 @@
-[
+export default [
     {
         "_id": "63a69ab53448a4224838a021",
         "email": "admin@consulta.udg.mx",
