@@ -15,7 +15,7 @@ export default function (id:string){
         ],
 
         // DATABASE CONFIGS
-        cloud: false,
+        cloud: true,
         cnn: 'mongodb+srv://admin:admin@sisfp.w4kxy5y.mongodb.net/test',
         local: 'mongodb://localhost/sisfp',
 
