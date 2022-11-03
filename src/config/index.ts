@@ -7,8 +7,11 @@ export default function (id:string){
             '*'
         ],
         additionalHeaders: [
-            'authorization', 
-            'language'
+            'Authorization', 
+            'authorization',
+            'language',
+            'Accept',
+            'Content-Type'
         ],
 
         // DATABASE CONFIGS

@@ -1,5 +1,6 @@
 import authRoutes from './auth/routes';
 import usersRoutes from './users/routes';
+import rolesRoutes from './roles/routes';
 
 export const Routes:any = [
     {
@@ -11,5 +12,6 @@ export const Routes:any = [
         }
     },
     ...authRoutes,
-    ...usersRoutes
+    ...usersRoutes,
+    ...rolesRoutes
 ]

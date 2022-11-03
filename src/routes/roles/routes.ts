@@ -3,7 +3,7 @@ import { deleteModel, deleteResponse, editResponse, findModel, newResponse } fro
 import { failAction } from "../../core/joi";
 import { baseModel, editModel, newModel } from "./validators";
 
-const prefix:string = '/base';
+const prefix:string = '/roles';
 
 export default [
     {
