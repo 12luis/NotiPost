@@ -1,10 +1,14 @@
 import Role from '../routes/roles/model';
 import User from '../routes/users/model';
 import Center from '../routes/centers/model';
+import Degree from '../routes/degrees/model';
+import Subject from '../routes/subjects/model';
 
 import roles from './json/roles';
 import users from './json/users';
 import centers from './json/centers';
+import degrees from './json/degrees';
+import subjects from './json/subjects';
 
 export default async function () {
 
@@ -21,5 +25,13 @@ export default async function () {
         await Center.insertMany(centers);
     }
 
-    
+    const countDegrees = await Degree.countDocuments();
+    if(countDegrees === 0){
+        await Degree.insertMany(degrees);
+    }
+
+    const countSubjects = await Subject.countDocuments();
+    if(countSubjects === 0){
+        await Subject.insertMany(subjects);
+    }
 }
