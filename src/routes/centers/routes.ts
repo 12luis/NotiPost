@@ -1,9 +1,9 @@
 import { _create, _delete, _edit, _findById, _getAll } from ".";
-import { deleteModel, deleteResponse, editResponse, findModel, newResponse } from "../../routes/base.validators";
+import { deleteModel, deleteResponse, editResponse, findModel, newResponse } from "../base.validators";
 import { failAction } from "../../core/joi";
 import { baseModel, editModel, newModel } from "./validators";
 
-const prefix:string = '/base';
+const prefix:string = '/centers';
 
 export default [
     {
@@ -13,11 +13,11 @@ export default [
             handler: _findById,
             auth: 'jwt',
             description: 'Find resource by ID',
-            validate: {
-                // headers: 
-                params: findModel,
-                failAction
-            },
+            // validate: {
+            //     // headers: 
+            //     params: findModel,
+            //     failAction
+            // },
             response: {
                 schema: baseModel,
                 failAction
@@ -31,11 +31,10 @@ export default [
             handler: _getAll,
             auth: 'jwt',
             description: 'Find list of resources',
-            validate: {
-                // headers: 
-                params: findModel,
-                failAction
-            },
+            // validate: { 
+            //     params: findModel,
+            //     failAction
+            // },
             response: {
                 schema: baseModel,
                 failAction
