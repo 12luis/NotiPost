@@ -3,7 +3,10 @@ import { Joi } from "../../core/joi"
 import { pagination } from "../base.validators";
 
 export const baseModel = Joi.object({
-    ...commonBase
+    ...commonBase,
+    name: Joi.string().optional(),
+    acronym: Joi.string().optional(),
+    centerId: Joi.ObjectId().optional(),
 }).options({ allowUnknown: true });
 
 export const getAllModel = Joi.object({
@@ -12,11 +15,15 @@ export const getAllModel = Joi.object({
 }).required();
 
 export const newModel = Joi.object({
-    name: Joi.string().required(),
-    active: Joi.boolean().optional()
+    active: Joi.boolean().optional(),
+    name: Joi.string().optional(),
+    acronym: Joi.string().optional(),
+    centerId: Joi.ObjectId().optional(),
 }).required();
 
 export const editModelV = Joi.object({
+    active: Joi.boolean().optional(),
     name: Joi.string().optional(),
-    active: Joi.boolean().optional()
+    acronym: Joi.string().optional(),
+    centerId: Joi.ObjectId().optional(),
 }).required();
