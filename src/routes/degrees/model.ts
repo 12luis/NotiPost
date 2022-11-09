@@ -10,15 +10,15 @@ const schema = new Schema({
     },
     name: {
         type: String, 
-        required: true
+        required: false
     },
     acronym: {
         type: String,
-        required: true
+        required: false
     },
     centerId: {
         type: Mongoose.Schema.Types.ObjectId, 
-        required: true
+        required: false
     },
     active: { 
         type: Boolean, 
