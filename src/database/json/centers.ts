@@ -5,5 +5,43 @@ export default [
         acronym: "CUCEI",
         root: true,
         active: true
+    },
+
+
+    // LUIS OCTAVIO
+    {
+        _id:"6941a1d442c2d5febc58f000",
+        name: "Centro Universitario de la Costa Sur",
+        acronym:"CUCSUR",
+        root:true,
+        active: true, 
+    },
+    {
+        _id:"6dcc0d6541fba6305157a000",
+        name: "Centro Universitario de los Lagos",
+        acronym:"CULAGOS",
+        root:true,
+        active: true, 
+    },
+    {
+        _id:"67bf9162fdcf77f873f3d000",
+        name: "Centro Universitario de los Altos",
+        acronym:"CUALTOS",
+        root:true,
+        active: true, 
+    },
+    {
+        _id:"6eda0ac522f0d7b3759cd000",
+        name: "Centro Universitario de la Ciénega",
+        acronym:"CUCIENEGA",
+        root:true,
+        active: true, 
+    },
+    {
+        _id:"61c51888e1da2e13f4b1c000",
+        name: "Centro Universitario del Sur",
+        acronym:"CUSUR",
+        root:true,
+        active: true, 
     }
 ]
