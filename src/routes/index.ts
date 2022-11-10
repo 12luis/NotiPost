@@ -4,6 +4,8 @@ import rolesRoutes from './roles/routes';
 import centersRoutes from './centers/routes';
 import degreesRoutes from './degrees/routes';
 import subjectsRoutes from './subjects/routes';
+import subscriptionRoutes from './subscription/routes';
+import groupsRoutes from './groups/routes';
 
 export const Routes:any = [
     {
@@ -19,5 +21,7 @@ export const Routes:any = [
     ...rolesRoutes,
     ...centersRoutes,
     ...degreesRoutes,
-    ...subjectsRoutes
+    ...subjectsRoutes,
+    ...subscriptionRoutes,
+    ...groupsRoutes
 ]
