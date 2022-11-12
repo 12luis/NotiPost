@@ -43,5 +43,40 @@ export default [
         acronym:"CUSUR",
         root:true,
         active: true, 
+    },
+    {
+        _id: "6cf20a70a182ba07ad9a9000",
+        name: "Centro Universitario de Arte, Arquitectura y Diseño",
+        acronym: "CUAAD",
+        root: true,
+        active: true
+    },
+    {
+        _id: "6cf20a70a182ba07ad9a9001",
+        name: "Centro Universitario del Norte",
+        acronym: "CUNORTE",
+        root: true,
+        active: true
+    },
+    {
+        _id: "6cf20a70a182ba07ad9a9002",
+        name: "Centro Universitario de la Costa",
+        acronym: "CUCOSTA",
+        root: true,
+        active: true
+    },
+    {
+        _id: "6cf20a70a182ba07ad9a9003",
+        name: "Centro Universitario de los Valles",
+        acronym: "CUVALLES",
+        root: true,
+        active: true
+    },
+    {
+        _id: "6cf20a70a182ba07ad9a9004",
+        name: "Centro Universitario de Tonalá",
+        acronym: "CUTONALA",
+        root: true,
+        active: true
     }
 ]

@@ -22,7 +22,7 @@ export async function _findById(request:any, h:any):Promise<any>{
 export async function _getAll(request:any, h:any):Promise<any>{
     const { query } = request;
     query.paginationPage = query.paginationPage || 1;
-    query.paginationPerPage = query.paginationPerPage || 10;
+    query.paginationPerPage = query.paginationPerPage || 10000; // TODO Mexicanada aquí para que las listas salgan completas
     try {
         const aggregate: any = [];
         const $and: any = [];

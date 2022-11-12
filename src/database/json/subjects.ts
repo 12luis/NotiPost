@@ -11,7 +11,7 @@ export default [
 
     // LUIS OCTAVIO
 
-     //Cucsur
+    //Cucsur
     //Licenciatura en Administración
     {
         _id:"68b4696d0d49b3088573e000",
@@ -275,7 +275,6 @@ export default [
         _id:"613f81c25242c08e9cbbb010",
         name : "ADMINISTRACIÓN DE RESIDUOS",
         centerId: "6dcc0d6541fba6305157a000",
-        cve: "n/a",
         root:true,
         active: true, 
     },
@@ -283,7 +282,6 @@ export default [
         _id:"613f81c25242c08e9cbbb011",
         name : "ADMINISTRACIÓN DE SUELOS",
         centerId: "6dcc0d6541fba6305157a000",
-        cve: "n/a",
         root:true,
         active: true, 
     },
@@ -321,43 +319,42 @@ export default [
         root:true,
         active: true, 
     },
-// Licenciatura en Administración
-{
-    _id:"613f81c25242c08e9cbbb016",
-    name : "ADMINISTRACIÓN I",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "I0942",
-    root:true,
-    active: true, 
-},
-{
-    _id:"613f81c25242c08e9cbbb017",
-    name : "ECONOMIA II",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "I5088",
-    root:true,
-    active: true, 
-},
-// Licenciatura en Lenguas y Culturas Extranjeras   
-{
-    _id:"613f81c25242c08e9cbbb018",
-    name : "GLOBALIZACIÓN Y DIVERSIDAD CULTURAL",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "n/a",
-    root:true,
-    active: true, 
-},
-{
-    _id:"613f81c25242c08e9cbbb019",
-    name : "DIDACTICA II",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "ID624",
-    root:true,
-    active: true, 
-},
-    
-    
-    
+    // Licenciatura en Administración
+    {
+        _id:"613f81c25242c08e9cbbb016",
+        name : "ADMINISTRACIÓN I",
+        centerId: "6dcc0d6541fba6305157a000",
+        cve: "I0942",
+        root:true,
+        active: true, 
+    },
+    {
+        _id:"613f81c25242c08e9cbbb017",
+        name : "ECONOMIA II",
+        centerId: "6dcc0d6541fba6305157a000",
+        cve: "I5088",
+        root:true,
+        active: true, 
+    },
+    // Licenciatura en Lenguas y Culturas Extranjeras   
+    {
+        _id:"613f81c25242c08e9cbbb018",
+        name : "GLOBALIZACIÓN Y DIVERSIDAD CULTURAL",
+        centerId: "6dcc0d6541fba6305157a000",
+        root:true,
+        active: true, 
+    },
+    {
+        _id:"613f81c25242c08e9cbbb019",
+        name : "DIDACTICA II",
+        centerId: "6dcc0d6541fba6305157a000",
+        cve: "ID624",
+        root:true,
+        active: true, 
+    },
+        
+        
+        
     // Ingeniería Mecánica Eléctrica
     {
         _id:"613f81c25242c08e9cbbb020",
@@ -375,58 +372,57 @@ export default [
         root:true,
         active: true, 
     },
-// Ingeniería Mecatrónica
-{
-    _id:"613f81c25242c08e9cbbb022",
-    name : "FISICA",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "IH961",
-    root:true,
-    active: true, 
-},
-{
-    _id:"613f81c25242c08e9cbbb023",
-    name : "ÓPTICA",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "ID957",
-    root:true,
-    active: true, 
-},
-// Licenciatura en Periodismo
-{
-    _id:"613f81c25242c08e9cbbb024",
-    name : "APRECIACIÓN DEL ARTE",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "n/a",
-    root:true,
-    active: true, 
-},
-{
-    _id:"613f81c25242c08e9cbbb025",
-    name : "SISTEMA POLÍTICO MEXICANO",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "I8419",
-    root:true,
-    active: true, 
-},
-// Licenciatura en Psicología
-{
-    _id:"613f81c25242c08e9cbbb026",
-    name : "SEXUALIDAD HUMANA",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "I3835",
-    root:true,
-    active: true, 
-},
-{
-    _id:"613f81c25242c08e9cbbb027",
-    name : "MÉTODOS DE INVESTIGACIÓN CUALITATIVA",
-    centerId: "6dcc0d6541fba6305157a000",
-    cve: "I9122",
-    root:true,
-    active: true, 
-},
-//Cualtos
+    // Ingeniería Mecatrónica
+    {
+        _id:"613f81c25242c08e9cbbb022",
+        name : "FISICA",
+        centerId: "6dcc0d6541fba6305157a000",
+        cve: "IH961",
+        root:true,
+        active: true, 
+    },
+    {
+        _id:"613f81c25242c08e9cbbb023",
+        name : "ÓPTICA",
+        centerId: "6dcc0d6541fba6305157a000",
+        cve: "ID957",
+        root:true,
+        active: true, 
+    },
+    // Licenciatura en Periodismo
+    {
+        _id:"613f81c25242c08e9cbbb024",
+        name : "APRECIACIÓN DEL ARTE",
+        centerId: "6dcc0d6541fba6305157a000",
+        root:true,
+        active: true, 
+    },
+    {
+        _id:"613f81c25242c08e9cbbb025",
+        name : "SISTEMA POLÍTICO MEXICANO",
+        centerId: "6dcc0d6541fba6305157a000",
+        cve: "I8419",
+        root:true,
+        active: true, 
+    },
+    // Licenciatura en Psicología
+    {
+        _id:"613f81c25242c08e9cbbb026",
+        name : "SEXUALIDAD HUMANA",
+        centerId: "6dcc0d6541fba6305157a000",
+        cve: "I3835",
+        root:true,
+        active: true, 
+    },
+    {
+        _id:"613f81c25242c08e9cbbb027",
+        name : "MÉTODOS DE INVESTIGACIÓN CUALITATIVA",
+        centerId: "6dcc0d6541fba6305157a000",
+        cve: "I9122",
+        root:true,
+        active: true, 
+    },
+    //Cualtos
     // Licenciatura en Administración
     {
         _id:"68bd8abd07a172ad29d91000",
@@ -517,7 +513,6 @@ export default [
         _id:"68bd8abd07a172ad29d91010",
         name: "ALGORITMIA",
         centerId: "67bf9162fdcf77f873f3d000",
-        cve:"n/a",
         root:true,
         active: true, 
     },
@@ -525,7 +520,6 @@ export default [
         _id:"68bd8abd07a172ad29d91011",
         name: "ESTRUCTURA DE DATOS I",
         centerId: "67bf9162fdcf77f873f3d000",
-        cve:"n/a",
         root:true,
         active: true, 
     },
@@ -1029,7 +1023,6 @@ export default [
         _id:"6ea3428bdf5993fb84c2d010",
         name: "INTEGRACIÓN DE HABLIDADES LECTORAS",
         centerId: "61c51888e1da2e13f4b1c000",
-        cve:"n/a",
         root:true,
         active: true, 
     },
@@ -1114,7 +1107,6 @@ export default [
         _id:"6ea3428bdf5993fb84c2d020",
         name: "OBSERVACIÓN ETNOGRÁFICA",
         centerId: "61c51888e1da2e13f4b1c000",
-        cve:"n/a",
         root:true,
         active: true, 
     },
@@ -1165,7 +1157,7 @@ export default [
         _id:"6ea3428bdf5993fb84c2d026",
         name: "ANTROPOLOGÍA CULTURAL",
         centerId: "61c51888e1da2e13f4b1c000",
-        cve:"	SH101",
+        cve:"SH101",
         root:true,
         active: true, 
     },

@@ -10,7 +10,7 @@ const schema = new Schema({
     },
     name: {
         type: String,
-        required: false
+        required: true
     },
     cve: {
         type: String,
@@ -18,7 +18,7 @@ const schema = new Schema({
     },
     centerId: {
         type: Mongoose.Types.ObjectId,
-        required: false
+        required: true
     },
     active: { 
         type: Boolean, 

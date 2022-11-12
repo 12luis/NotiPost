@@ -4,7 +4,7 @@ import { pagination } from "../base.validators";
 
 export const baseModel = Joi.object({
     name: Joi.string().optional(),
-    acronym: Joi.string().optional(),
+    acronym: Joi.string().allow('').allow(null).optional(),
     ...commonBase
 }).options({ allowUnknown: true });
 
@@ -15,12 +15,12 @@ export const getAllModel = Joi.object({
 
 export const newModel = Joi.object({
     name: Joi.string().optional(),
-    acronym: Joi.string().optional(),
+    acronym: Joi.allow('', null).optional(),
     active: Joi.boolean().optional()
 }).required();
 
 export const editModelV = Joi.object({
     name: Joi.string().optional(),
-    acronym: Joi.string().optional(),
+    acronym: Joi.allow('', null).optional(),
     active: Joi.boolean().optional()
 }).required();
