@@ -74,7 +74,6 @@ export async function _getAll(request:any, h:any):Promise<any>{
         const total = await Model.countDocuments({ deleted: false });
         const totalFiltered: any = await Model.aggregate(_aggregate);
         const result: any = await Model.aggregate(aggregate);
-        console.log(result);
         const data = {
             data: result,
             pagination: {

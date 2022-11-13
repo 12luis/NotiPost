@@ -29,7 +29,7 @@ export default [
         path: `${prefix}`,
         options: {
             handler: _getAll,
-            auth: 'jwt',
+            auth: false,
             description: 'Find list of resources',
             // validate: { 
             //     params: findModel,

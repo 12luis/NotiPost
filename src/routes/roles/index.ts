@@ -22,7 +22,7 @@ export async function _findById(request:any, h:any):Promise<any>{
 export async function _getAll(request:any, h:any):Promise<any>{
     const { query } = request;
     query.paginationPage = query.paginationPage || 1;
-    query.paginationPerPage = query.paginationPerPage || 10;
+    query.paginationPerPage = query.paginationPerPage || 10000; // TODO Mexicanada aquí para que las listas salgan completas
     try {
         const aggregate: any = [];
         const $and: any = [];
@@ -51,9 +51,15 @@ export async function _getAll(request:any, h:any):Promise<any>{
             });
         }
         const _aggregate = _.clone(aggregate);
+
         let $sort: any = {};
+        if(query.sort){
+            $sort[query.sort] = query.sortDir === 'desc' ? -1 : 1;
+        } else {
+            $sort = { name: -1 };
+        }
         aggregate.push({
-            $sort,
+            $sort
         });
         aggregate.push({
             $skip: Number(
