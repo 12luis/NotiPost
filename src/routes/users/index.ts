@@ -1,9 +1,13 @@
 import Boom from '@hapi/boom';
 import mongoose from 'mongoose';
 import * as _ from 'lodash';
+
 import Model from './model';
+import Role from '../roles/model';
+
 import configs from '../../config';
 import { sendMail } from '../../mail/confirm';
+import jwtDecode from 'jwt-decode';
 
 export async function _findById(request:any, h:any):Promise<any>{
     try {
@@ -46,6 +50,13 @@ export async function _getAll(request:any, h:any):Promise<any>{
                 $and.push({  $or });
             }
         }
+        
+        const decoded:any = jwtDecode(request.headers.authorization);
+        const authUser:any = await Model.findById(decoded._id);
+        if(authUser.roleId.toString() === configs('studentRole')){
+            $and.push({_id: authUser._id});
+        }
+
         $and.push({ deleted: { $ne: true } });
         if($and.length){
             aggregate.push({
