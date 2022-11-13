@@ -15,7 +15,7 @@ const schema = new Schema({
         type: Boolean, required: true, default: false
     },
     password: {
-        type: String, required: false // TODO allow null, '', undefined.
+        type: String, required: false
     },
     owner: {
         type: Mongoose.Schema.Types.ObjectId,
@@ -25,7 +25,7 @@ const schema = new Schema({
         type: Boolean,
         required: true
     },
-    degree: { // TODO rename degrees to coordination
+    degree: {
         type: Boolean,
         required: true
     },

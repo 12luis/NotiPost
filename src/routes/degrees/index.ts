@@ -44,6 +44,9 @@ export async function _getAll(request:any, h:any):Promise<any>{
                 $and.push({  $or });
             }
         }
+        if(query.filterCenters){
+            $and.push({centerId: new mongoose.Types.ObjectId(query.filterCenters)});
+        }
         $and.push({ deleted: { $ne: true } });
         if($and.length){
             aggregate.push({

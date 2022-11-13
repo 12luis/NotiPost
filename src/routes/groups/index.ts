@@ -2,6 +2,7 @@ import Boom from '@hapi/boom';
 import mongoose from 'mongoose';
 import * as _ from 'lodash';
 import Model from './model';
+import jwtDecode from 'jwt-decode';
 
 export async function _findById(request:any, h:any):Promise<any>{
     try {
@@ -93,6 +94,10 @@ export async function _create(request:any, h:any):Promise<any>{
     const { payload } = request;
     let id;
     try {
+        const decoded:any = jwtDecode(request.headers.authorization);
+        const authUser:any = await Model.findById(decoded._id);
+        payload['owner'] = authUser._id;
+
         const model = new Model(payload);
         await model.save();
         id = model._id;
