@@ -25,7 +25,7 @@ const schema = new Schema({
         type: Boolean,
         required: true
     },
-    coordination: { // TODO rename degrees to coordination
+    degree: { // TODO rename degrees to coordination
         type: Boolean,
         required: true
     },
