@@ -2,6 +2,7 @@ import Boom from '@hapi/boom';
 import mongoose from 'mongoose';
 import * as _ from 'lodash';
 import Model from './model';
+import User from '../users/model';
 import jwtDecode from 'jwt-decode';
 
 export async function _findById(request:any, h:any):Promise<any>{
@@ -58,7 +59,10 @@ export async function _getAll(request:any, h:any):Promise<any>{
                 $unwind: '$Subscription'
             });
         }
-        $and.push({ deleted: { $ne: true } });
+        $and.push({ 
+            deleted: { $ne: true },
+            'Subscription.deleted': { $ne: true }
+        });
         if($and.length){
             aggregate.push({
                 $match: { $and },
@@ -108,7 +112,7 @@ export async function _create(request:any, h:any):Promise<any>{
     let id;
     try {
         const decoded:any = jwtDecode(request.headers.authorization);
-        const authUser:any = await Model.findById(decoded._id);
+        const authUser:any = await User.findById(decoded._id);
         payload['ownerId'] = authUser._id;
 
         const model = new Model(payload);

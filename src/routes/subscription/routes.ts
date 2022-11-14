@@ -1,7 +1,7 @@
-import { _create, _delete, _edit, _findById, _getAll } from ".";
+import { _create, _delete, _edit, _findById, _getAll, _unsubscribe } from ".";
 import { deleteModel, deleteResponse, editModel, editResponse, findModel, newResponse } from "../base.validators";
 import { failAction } from "../../core/joi";
-import { baseModel, editModelV, newModel } from "./validators";
+import { baseModel, editModelV, newModel, unsubModel } from "./validators";
 
 const prefix:string = '/subscriptions';
 
@@ -89,6 +89,24 @@ export default [
             validate: {
                 // headers: 
                 params: deleteModel,
+                failAction
+            },
+            response: {
+                schema: deleteResponse,
+                failAction
+            }
+        }
+    },
+
+    {
+        method: 'POST',
+        path: `${prefix}/unsubscribe`,
+        options: {
+            handler: _unsubscribe,
+            auth: 'jwt',
+            description: 'Unsubscribes',
+            validate: {
+                payload: unsubModel,
                 failAction
             },
             response: {

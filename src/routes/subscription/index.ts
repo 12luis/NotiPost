@@ -139,3 +139,17 @@ export async function _delete(request:any, h:any):Promise<any>{
         return Boom.badImplementation();
     }
 }
+
+export async function _unsubscribe(request:any, h:any):Promise<any>{
+    const { userId, groupId } = request.payload;
+
+    try {
+        await Model.updateMany({ userId, groupId } , {
+            $set: { deleted: true }
+        });
+        return h.response({ success: true }).code(200);
+    } catch (error) {
+        console.log(error);
+        return Boom.badImplementation();
+    }
+}

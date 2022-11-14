@@ -3,7 +3,9 @@ import { Joi } from "../../core/joi"
 import { pagination } from "../base.validators";
 
 export const baseModel = Joi.object({
-    ...commonBase
+    ...commonBase,
+    userId: Joi.ObjectId().optional(),
+    groupId: Joi.ObjectId().optional()
 }).options({ allowUnknown: true });
 
 export const getAllModel = Joi.object({
@@ -12,11 +14,18 @@ export const getAllModel = Joi.object({
 }).required();
 
 export const newModel = Joi.object({
-    name: Joi.string().required(),
+    userId: Joi.ObjectId().optional(),
+    groupId: Joi.ObjectId().optional(),
     active: Joi.boolean().optional()
 }).required();
 
 export const editModelV = Joi.object({
-    name: Joi.string().optional(),
+    userId: Joi.ObjectId().optional(),
+    groupId: Joi.ObjectId().optional(),
     active: Joi.boolean().optional()
 }).required();
+
+export const unsubModel = Joi.object({
+    userId: Joi.ObjectId().optional(),
+    groupId: Joi.ObjectId().optional(),
+});
