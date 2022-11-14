@@ -17,7 +17,7 @@ const schema = new Schema({
     password: {
         type: String, required: false
     },
-    owner: {
+    ownerId: {
         type: Mongoose.Schema.Types.ObjectId,
         required: true
     },

@@ -45,6 +45,19 @@ export async function _getAll(request:any, h:any):Promise<any>{
                 $and.push({  $or });
             }
         }
+        if(query.includeOwn){
+            aggregate.push({
+                $lookup: {
+                    from: 'Subscription',
+                    localField: '_id',
+                    foreignField: 'groupId',
+                    as: 'Subscription'
+                }
+            });
+            aggregate.push({
+                $unwind: '$Subscription'
+            });
+        }
         $and.push({ deleted: { $ne: true } });
         if($and.length){
             aggregate.push({
@@ -96,7 +109,7 @@ export async function _create(request:any, h:any):Promise<any>{
     try {
         const decoded:any = jwtDecode(request.headers.authorization);
         const authUser:any = await Model.findById(decoded._id);
-        payload['owner'] = authUser._id;
+        payload['ownerId'] = authUser._id;
 
         const model = new Model(payload);
         await model.save();
