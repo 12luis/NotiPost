@@ -6,6 +6,7 @@ import Subject from '../routes/subjects/model';
 import Group from '../routes/groups/model';
 import Subscription from '../routes/subscription/model';
 import Post from '../routes/posts/model';
+import Comment from '../routes/comments/model';
 
 import roles from './json/roles';
 import users from './json/users';
@@ -15,6 +16,7 @@ import subjects from './json/subjects';
 import groups from './json/groups';
 import subscriptions from './json/subscriptions';
 import posts from './json/posts';
+import comments from './json/comments';
 
 export default async function () {
 
@@ -54,5 +56,10 @@ export default async function () {
     const countPosts = await Post.countDocuments();
     if(countPosts === 0){
         await Post.insertMany(posts);
+    }
+
+    const countComments = await Comment.countDocuments();
+    if(countComments === 0){
+        await Comment.insertMany(comments);
     }
 }
