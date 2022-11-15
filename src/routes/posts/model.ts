@@ -12,6 +12,10 @@ const schema = new Schema({
         type: Mongoose.Schema.Types.ObjectId,
         required: true
     },
+    groupId: {
+        type: Mongoose.Schema.Types.ObjectId,
+        required: true
+    },
     title: {
         type: String,
         required: true,

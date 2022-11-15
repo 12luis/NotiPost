@@ -5,6 +5,7 @@ import Degree from '../routes/degrees/model';
 import Subject from '../routes/subjects/model';
 import Group from '../routes/groups/model';
 import Subscription from '../routes/subscription/model';
+import Post from '../routes/posts/model';
 
 import roles from './json/roles';
 import users from './json/users';
@@ -13,6 +14,7 @@ import degrees from './json/degrees';
 import subjects from './json/subjects';
 import groups from './json/groups';
 import subscriptions from './json/subscriptions';
+import posts from './json/posts';
 
 export default async function () {
 
@@ -47,5 +49,10 @@ export default async function () {
     const countSubscriptions = await Subscription.countDocuments();
     if(countSubscriptions === 0) {
         await Subscription.insertMany(subscriptions);
+    }
+
+    const countPosts = await Post.countDocuments();
+    if(countPosts === 0){
+        await Post.insertMany(posts);
     }
 }

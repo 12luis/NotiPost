@@ -6,6 +6,7 @@ import degreesRoutes from './degrees/routes';
 import subjectsRoutes from './subjects/routes';
 import subscriptionRoutes from './subscription/routes';
 import groupsRoutes from './groups/routes';
+import postsRoutes from './posts/routes';
 
 export const Routes:any = [
     {
@@ -23,5 +24,6 @@ export const Routes:any = [
     ...degreesRoutes,
     ...subjectsRoutes,
     ...subscriptionRoutes,
-    ...groupsRoutes
+    ...groupsRoutes,
+    ...postsRoutes
 ]

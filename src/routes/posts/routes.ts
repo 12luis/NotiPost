@@ -4,7 +4,7 @@ import { failAction } from "../../core/joi";
 import { baseModel, editModelV, newModel } from "./validators";
 
 const prefix:string = '/groups';
-const postfix:string = '/posts';
+const postfix:string = 'posts';
 
 export default [
     {

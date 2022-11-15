@@ -44,6 +44,7 @@ export async function _getAll(request:any, h:any):Promise<any>{
                 $and.push({  $or });
             }
         }
+        $and.push({ groupId: new mongoose.Types.ObjectId(request.params.groupId)});
         $and.push({ deleted: { $ne: true } });
         if($and.length){
             aggregate.push({
