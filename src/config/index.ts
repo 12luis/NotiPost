@@ -34,7 +34,7 @@ export default function (id:string){
         mailPass: 'konphdkeszkuiuqm',
 
         // CYCLE ENGINE CONFIGS
-        enginecycle: 3600000,
+        enginecycle: 60000,
 
         // ROLES
         studentRole: '63a69ab53448a4224838a022',

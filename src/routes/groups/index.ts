@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import * as _ from 'lodash';
 import Model from './model';
 import User from '../users/model';
+import Subscription from '../subscription/model';
 import jwtDecode from 'jwt-decode';
 
 export async function _findById(request:any, h:any):Promise<any>{
@@ -58,11 +59,15 @@ export async function _getAll(request:any, h:any):Promise<any>{
             aggregate.push({
                 $unwind: '$Subscription'
             });
+            const decoded:any = jwtDecode(request.headers.authorization);
+            const authUser:any = await User.findById(decoded._id);
+            $and.push({ 
+                deleted: { $ne: true },
+                'Subscription.deleted': { $ne: true },
+                'Subscription.userId': new mongoose.Types.ObjectId(authUser._id)
+            });
         }
-        $and.push({ 
-            deleted: { $ne: true },
-            'Subscription.deleted': { $ne: true }
-        });
+        
         if($and.length){
             aggregate.push({
                 $match: { $and },
