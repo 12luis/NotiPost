@@ -31,7 +31,7 @@ export async function sendMail(user:any, post:any):Promise<boolean>{
         await transporter.sendMail({
             from: configs('mailUser'),
             to: [ targetEmail ],
-            subject: `Código de recuperación. Consulta UDG.`,
+            subject: `Recordatorio - ${post.title} - Consulta UDG.`,
             html: output
         });
 
