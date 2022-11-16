@@ -26,7 +26,7 @@ const schema = new Schema({
     },
     media: {
         type: String,
-        required: true
+        required: false
     },
     createdAt: {
         type: Date,
@@ -40,10 +40,14 @@ const schema = new Schema({
         type: Boolean,
         required: true,
     },
-    advised: {
+    notified: {
         type: Boolean,
         required: true,
         default: false
+    },
+    notifyAt: {
+        type: Date,
+        required: false
     },
     active: { 
         type: Boolean, 

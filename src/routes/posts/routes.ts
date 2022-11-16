@@ -1,7 +1,7 @@
 import { _create, _delete, _edit, _findById, _getAll } from ".";
 import { deleteModel, deleteResponse, editModel, editResponse, findModel, newResponse } from "../base.validators";
 import { failAction } from "../../core/joi";
-import { baseModel, editModelV, newModel } from "./validators";
+import { baseModel, deleteModelV, editModelV, newModel } from "./validators";
 
 const prefix:string = '/groups';
 const postfix:string = 'posts';
@@ -70,7 +70,7 @@ export default [
             description: 'Delete resource',
             validate: {
                 // headers: 
-                params: deleteModel,
+                params: deleteModelV,
                 failAction
             },
             response: {

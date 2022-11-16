@@ -11,7 +11,7 @@ export default [
         createdAt: "2022-01-05",
         finishAt: "2022-12-10",
         moment: true,
-        advised: false,
+        notified: false,
         active: true,
         root: true
     },
@@ -29,7 +29,7 @@ export default [
         createdAt: "2022-11-14",
         finishAt: "2022-11-20",
         moment: true,
-        advised: false,
+        notified: false,
         active: true,
         root: true
     }
