@@ -13,7 +13,7 @@ export default [
     },
     {
         _id: "63a69ab53448a4224838a022",
-        email: "cdinf@cucei.udg.mx",
+        email: "noexiste@gmail.com",
         password: "1",
         name: "Sara Esquivel Torres",
         roleId: "63a69ab53448a4224838a023",
