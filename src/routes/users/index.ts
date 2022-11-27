@@ -109,12 +109,10 @@ export async function _create(request:any, h:any):Promise<any>{
 
         // Asigna el ID de acuerdo al correo
         const { email } = payload as any;
-        if(email.split("@")[1] === 'alumnos.udg.mx'){
-            payload['roleId'] = configs('studentRole');
-        }else if (email.split("@")[1] === 'academicos.udg.mx'){
+        if (email.split("@")[1] === 'academicos.udg.mx'){
             payload['roleId'] = configs('academicRole');
-        }else {
-            return Boom.badRequest('Solo se permite el registro a alumnos de la Universidad de Guadalajara');
+        }else{
+            payload['roleId'] = configs('studentRole');
         }
 
 
