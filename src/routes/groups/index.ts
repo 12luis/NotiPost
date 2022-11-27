@@ -67,6 +67,21 @@ export async function _getAll(request:any, h:any):Promise<any>{
                 'Subscription.userId': new mongoose.Types.ObjectId(authUser._id)
             });
         }
+        if(query.notIncludeOwn){
+            const decoded:any = jwtDecode(request.headers.authorization);
+            const authUser:any = await User.findById(decoded._id);
+
+            const subscriptions: any = await Subscription.find({ 
+                userId: new mongoose.Types.ObjectId(authUser._id),
+                deleted: {$ne: true}
+            });
+
+            for(let subscription of subscriptions){
+                $and.push({
+                    _id: {$ne: new mongoose.Types.ObjectId(subscription.groupId)}
+                })
+            }
+        }
         
         if($and.length){
             aggregate.push({
