@@ -1,6 +1,5 @@
 export default function (id:string){
     const configsObject = {
-        
         // API CONFIGS
         port: 3105,
         origin: [
