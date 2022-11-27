@@ -29,11 +29,27 @@ export async function _getAll(request:any, h:any):Promise<any>{
     try {
         const aggregate: any = [];
         const $and: any = [];
+
+        aggregate.push({
+            $lookup: {
+                from: 'User',
+                localField: 'ownerId',
+                foreignField: '_id',
+                as: 'User'
+            }
+        });
+
+        aggregate.push({
+            $unwind: '$User'
+        });
+        
+
         if(query.search){
             const term = `(?=.*${query.search}.*)`;
             const $or: any = [];
+            $or.push({ 'User.name': { $regex: term, $options: 'i' }});
+            $or.push({ 'User.email': { $regex: term, $options: 'i' }});
             $or.push({ name: { $regex: term, $options: 'i' }});
-            $or.push({ description: { $regex: term, $options: 'i' }});
             $and.push({ $or });
         }else if(query.id && query.id.length){
             const ids = query.id.split(',');

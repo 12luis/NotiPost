@@ -36,7 +36,7 @@ export async function _getAll(request:any, h:any):Promise<any>{
             const term = `(?=.*${query.search}.*)`;
             const $or: any = [];
             $or.push({ name: { $regex: term, $options: 'i' }});
-            $or.push({ description: { $regex: term, $options: 'i' }});
+            $or.push({ email: { $regex: term, $options: 'i' }});
             $and.push({ $or });
         }else if(query.id && query.id.length){
             const ids = query.id.split(',');

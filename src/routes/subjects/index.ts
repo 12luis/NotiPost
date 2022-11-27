@@ -26,11 +26,26 @@ export async function _getAll(request:any, h:any):Promise<any>{
     try {
         const aggregate: any = [];
         const $and: any = [];
+
+        aggregate.push({ 
+            $lookup: {
+                from: 'Center',
+                localField: 'centerId',
+                foreignField: '_id',
+                as: 'Center'
+            }
+         });
+
+        aggregate.push({
+            $unwind: '$Center'
+        });
+
         if(query.search){
             const term = `(?=.*${query.search}.*)`;
             const $or: any = [];
             $or.push({ name: { $regex: term, $options: 'i' }});
-            $or.push({ description: { $regex: term, $options: 'i' }});
+            $or.push({ 'Center.name': { $regex: term, $options: 'i' }});
+            $or.push({ 'Center.acronym': { $regex: term, $options: 'i' }});
             $and.push({ $or });
         }else if(query.id && query.id.length){
             const ids = query.id.split(',');
