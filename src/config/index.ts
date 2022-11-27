@@ -15,7 +15,7 @@ export default function (id:string){
         ],
 
         // DATABASE CONFIGS
-        cloud: false,
+        cloud: true,
         cnn: 'mongodb+srv://admin:admin@sisfp.w4kxy5y.mongodb.net/test',
         local: 'mongodb://localhost/sisfp',
 
@@ -25,7 +25,7 @@ export default function (id:string){
         jwtExpiration: '4h',
 
         // MAIL CONFIS
-        mailsActive: false,
+        mailsActive: true,
         mailService: 'gmail',
         mailHost: 'smtp.gmail.com',
         mailSecureConnection: true,
