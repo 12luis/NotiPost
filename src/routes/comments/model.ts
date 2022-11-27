@@ -21,7 +21,7 @@ const schema = new Schema({
         required: true
     },
     createdAt: {
-        type: String,
+        type: Date,
         required: false
     },
     active: { 

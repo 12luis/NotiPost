@@ -56,7 +56,7 @@ export async function _getAll(request:any, h:any):Promise<any>{
         if(query.sort){
             $sort[query.sort] = query.sortDir === 'desc' ? -1 : 1;
         } else {
-            $sort = { name: -1 };
+            $sort = { createdAt: -1 };
         }
         aggregate.push({
             $sort
