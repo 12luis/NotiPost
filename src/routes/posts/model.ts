@@ -49,6 +49,11 @@ const schema = new Schema({
         type: Date,
         required: false
     },
+    applauses: {
+        type: Number,
+        default: 0,
+        required: true
+    },
     active: { 
         type: Boolean, 
         required: true, 

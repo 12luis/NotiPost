@@ -1,4 +1,4 @@
-import { _create, _delete, _edit, _findById, _getAll } from ".";
+import { _applause, _create, _delete, _edit, _findById, _getAll, _getAllPending } from ".";
 import { deleteModel, deleteResponse, editModel, editResponse, findModel, newResponse } from "../base.validators";
 import { failAction } from "../../core/joi";
 import { baseModel, deleteModelV, editModelV, newModel } from "./validators";
@@ -44,6 +44,19 @@ export default [
         }
     },
     {
+        method: 'GET',
+        path: `/posts/calendar`,
+        options: {
+            handler: _getAllPending,
+            auth: 'jwt',
+            description: 'Find list of posts',
+            response: {
+                schema: baseModel,
+                failAction
+            }
+        }
+    },
+    {
         method: 'POST',
         path: `${prefix}/{groupId}/${postfix}`,
         options: {
@@ -57,6 +70,34 @@ export default [
             },
             response: {
                 schema: newResponse,
+                failAction
+            }
+        }
+    },
+    {
+        method: 'POST',
+        path: `${prefix}/{groupId}/${postfix}/{id}/applause`,
+        options: {
+            handler: _applause,
+            auth: 'jwt',
+            description: 'Create resource',
+        }
+    },
+    {
+        method: 'PUT',
+        path: `${prefix}/{groupId}/${postfix}/{id}`,
+        options: {
+            handler: _edit,
+            auth: 'jwt',
+            description: 'Edit resource',
+            validate: {
+                // headers: 
+                params: deleteModelV,
+                payload: editModelV,
+                failAction
+            },
+            response: {
+                schema: editResponse,
                 failAction
             }
         }

@@ -13,7 +13,8 @@ export const baseModel = Joi.object({
     finishAt: Joi.date().optional(),
     notifyAt: Joi.date().optional(),
     moment: Joi.boolean().optional(),
-    notified: Joi.boolean().optional()
+    notified: Joi.boolean().optional(),
+    applauses: Joi.number().optional()
 }).options({ allowUnknown: true });
 
 export const getAllModel = Joi.object({
@@ -32,7 +33,8 @@ export const newModel = Joi.object({
     notifyAt: Joi.date().optional(),
     moment: Joi.boolean().optional(),
     notified: Joi.boolean().optional(),
-    active: Joi.boolean().optional()
+    active: Joi.boolean().optional(),
+    applauses: Joi.number().optional()
 }).required();
 
 export const editModelV = Joi.object({
@@ -46,7 +48,8 @@ export const editModelV = Joi.object({
     notifyAt: Joi.date().optional(),
     moment: Joi.boolean().optional(),
     notified: Joi.boolean().optional(),
-    active: Joi.boolean().optional()
+    active: Joi.boolean().optional(),
+    applauses: Joi.number().optional()
 }).required();
 
 export const deleteModelV = Joi.object({
